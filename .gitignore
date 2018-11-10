@@ -25,3 +25,5 @@ tmp/
 .directory
 launch.json
 .cmaketools.json
+*.d
+*.o
