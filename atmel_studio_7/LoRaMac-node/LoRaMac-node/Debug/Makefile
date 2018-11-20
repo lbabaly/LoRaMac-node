@@ -474,315 +474,524 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app/ClassC/%.o: ../app/ClassC/%.c
+app/ClassC/main.o: ../app/ClassC/main.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-app/common/%.o: ../app/common/%.c
+app/common/NvmCtxMgmt.o: ../app/common/NvmCtxMgmt.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/%.o: ../board/%.c
+board/board.o: ../board/board.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hal/src/%.o: ../board/mcu/saml21/hal/src/%.c
+board/delay-board.o: ../board/delay-board.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hal/utils/src/%.o: ../board/mcu/saml21/hal/utils/src/%.c
+board/eeprom-board.o: ../board/eeprom-board.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/core/%.o: ../board/mcu/saml21/hpl/core/%.c
+board/gpio-board.o: ../board/gpio-board.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/dmac/%.o: ../board/mcu/saml21/hpl/dmac/%.c
+board/mcu/saml21/hal/src/hal_atomic.o: ../board/mcu/saml21/hal/src/hal_atomic.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/eic/%.o: ../board/mcu/saml21/hpl/eic/%.c
+board/mcu/saml21/hal/src/hal_delay.o: ../board/mcu/saml21/hal/src/hal_delay.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/gclk/%.o: ../board/mcu/saml21/hpl/gclk/%.c
+board/mcu/saml21/hal/src/hal_ext_irq.o: ../board/mcu/saml21/hal/src/hal_ext_irq.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/mclk/%.o: ../board/mcu/saml21/hpl/mclk/%.c
+board/mcu/saml21/hal/src/hal_gpio.o: ../board/mcu/saml21/hal/src/hal_gpio.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/osc32kctrl/%.o: ../board/mcu/saml21/hpl/osc32kctrl/%.c
+board/mcu/saml21/hal/src/hal_init.o: ../board/mcu/saml21/hal/src/hal_init.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/oscctrl/%.o: ../board/mcu/saml21/hpl/oscctrl/%.c
+board/mcu/saml21/hal/src/hal_io.o: ../board/mcu/saml21/hal/src/hal_io.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/pm/%.o: ../board/mcu/saml21/hpl/pm/%.c
+board/mcu/saml21/hal/src/hal_sleep.o: ../board/mcu/saml21/hal/src/hal_sleep.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/sercom/%.o: ../board/mcu/saml21/hpl/sercom/%.c
+board/mcu/saml21/hal/src/hal_spi_m_sync.o: ../board/mcu/saml21/hal/src/hal_spi_m_sync.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/hpl/systick/%.o: ../board/mcu/saml21/hpl/systick/%.c
+board/mcu/saml21/hal/src/hal_usart_sync.o: ../board/mcu/saml21/hal/src/hal_usart_sync.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/saml21/%.o: ../board/mcu/saml21/%.c
+board/mcu/saml21/hal/utils/src/utils_assert.o: ../board/mcu/saml21/hal/utils/src/utils_assert.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-board/mcu/%.o: ../board/mcu/%.c
+board/mcu/saml21/hal/utils/src/utils_event.o: ../board/mcu/saml21/hal/utils/src/utils_event.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Device_Startup/%.o: ../Device_Startup/%.c
+board/mcu/saml21/hal/utils/src/utils_list.o: ../board/mcu/saml21/hal/utils/src/utils_list.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-mac/%.o: ../mac/%.c
+board/mcu/saml21/hal/utils/src/utils_syscalls.o: ../board/mcu/saml21/hal/utils/src/utils_syscalls.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-mac/region/%.o: ../mac/region/%.c
+board/mcu/saml21/hpl/core/hpl_core_m0plus_base.o: ../board/mcu/saml21/hpl/core/hpl_core_m0plus_base.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-radio/sx1276/%.o: ../radio/sx1276/%.c
+board/mcu/saml21/hpl/core/hpl_init.o: ../board/mcu/saml21/hpl/core/hpl_init.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-soft-se/%.o: ../soft-se/%.c
+board/mcu/saml21/hpl/dmac/hpl_dmac.o: ../board/mcu/saml21/hpl/dmac/hpl_dmac.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-system/%.o: ../system/%.c
+board/mcu/saml21/hpl/eic/hpl_eic.o: ../board/mcu/saml21/hpl/eic/hpl_eic.c
 	@echo Building file: $<
-	@echo Invoking: ARM/GNU C Compiler : 6.2.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
+
+board/mcu/saml21/hpl/gclk/hpl_gclk.o: ../board/mcu/saml21/hpl/gclk/hpl_gclk.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/saml21/hpl/mclk/hpl_mclk.o: ../board/mcu/saml21/hpl/mclk/hpl_mclk.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/saml21/hpl/osc32kctrl/hpl_osc32kctrl.o: ../board/mcu/saml21/hpl/osc32kctrl/hpl_osc32kctrl.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/saml21/hpl/oscctrl/hpl_oscctrl.o: ../board/mcu/saml21/hpl/oscctrl/hpl_oscctrl.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/saml21/hpl/pm/hpl_pm.o: ../board/mcu/saml21/hpl/pm/hpl_pm.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/saml21/hpl/sercom/hpl_sercom.o: ../board/mcu/saml21/hpl/sercom/hpl_sercom.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/saml21/hpl/systick/hpl_systick.o: ../board/mcu/saml21/hpl/systick/hpl_systick.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/saml21/hw_timer.o: ../board/mcu/saml21/hw_timer.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/mcu/utilities.o: ../board/mcu/utilities.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/rtc-board.o: ../board/rtc-board.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/spi-board.o: ../board/spi-board.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/sx1276-board.o: ../board/sx1276-board.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+board/uart-board.o: ../board/uart-board.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Device_Startup/startup_saml21.o: ../Device_Startup/startup_saml21.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Device_Startup/system_saml21.o: ../Device_Startup/system_saml21.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMac.o: ../mac/LoRaMac.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacAdr.o: ../mac/LoRaMacAdr.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacClassB.o: ../mac/LoRaMacClassB.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacCommands.o: ../mac/LoRaMacCommands.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacConfirmQueue.o: ../mac/LoRaMacConfirmQueue.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacCrypto.o: ../mac/LoRaMacCrypto.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacFCntHandler.o: ../mac/LoRaMacFCntHandler.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacParser.o: ../mac/LoRaMacParser.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/LoRaMacSerializer.o: ../mac/LoRaMacSerializer.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/Region.o: ../mac/region/Region.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionAS923.o: ../mac/region/RegionAS923.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionAU915.o: ../mac/region/RegionAU915.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionCN470.o: ../mac/region/RegionCN470.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionCN779.o: ../mac/region/RegionCN779.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionCommon.o: ../mac/region/RegionCommon.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionEU433.o: ../mac/region/RegionEU433.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionEU868.o: ../mac/region/RegionEU868.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionIN865.o: ../mac/region/RegionIN865.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionKR920.o: ../mac/region/RegionKR920.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionRU864.o: ../mac/region/RegionRU864.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+mac/region/RegionUS915.o: ../mac/region/RegionUS915.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+radio/sx1276/sx1276.o: ../radio/sx1276/sx1276.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+soft-se/aes.o: ../soft-se/aes.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+soft-se/cmac.o: ../soft-se/cmac.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+soft-se/soft-se.o: ../soft-se/soft-se.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/adc.o: ../system/adc.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/delay.o: ../system/delay.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/eeprom.o: ../system/eeprom.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/fifo.o: ../system/fifo.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/gpio.o: ../system/gpio.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/gps.o: ../system/gps.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/i2c.o: ../system/i2c.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/nvmm.o: ../system/nvmm.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/systime.o: ../system/systime.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/timer.o: ../system/timer.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+system/uart.o: ../system/uart.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML21J18B__ -DDEBUG -DREGION_EU868 -DACTIVE_REGION=LORAMAC_REGION_EU868 -DUSE_MODEM_LORA  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML21_DFP\1.1.110\saml21b\include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\CMSIS\4.2.0\CMSIS\Include" -I"../board/mcu/saml21/hal/include" -I"../board" -I"../board/mcu/saml21/config" -I"../board/mcu/saml21/cmsis" -I"../board/mcu/saml21/hpl/core" -I"../../../../src/system" -I"../mac" -I"../board/mcu/saml21/hal/utils/include" -I"../board/mcu/saml21/hri" -I"../radio" -I"../radio/sx1276" -I"../board/mcu/saml21/hpl/rtc" -I"../board/mcu/saml21/hpl/systick" -I"../board/mcu/saml21/hpl/sercom" -I"../board/mcu/saml21/hpl/port" -I"../app/common" -I"../app/ClassC" -I"../app" -I"../board/mcu/saml21" -I"../soft-se"  -O0 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 
 
 
@@ -808,7 +1017,7 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
-	@echo Invoking: ARM/GNU Linker : 6.2.1
+	@echo Invoking: ARM/GNU Linker : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -mthumb -Wl,-Map="LoRaMac-node.map" -Wl,--start-group -lm  -Wl,--end-group -L"..\\Device_Startup"  -Wl,--gc-sections -mcpu=cortex-m0plus -Tsaml21j18b_flash.ld  
 	@echo Finished building target: $@
 	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-objcopy.exe" -O binary "LoRaMac-node.elf" "LoRaMac-node.bin"

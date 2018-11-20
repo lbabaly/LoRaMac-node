@@ -1102,9 +1102,9 @@ int main( void )
                     {
                         DeviceState = DEVICE_STATE_SEND;
                         NextTx = true;
+						break;
                     }
-                }
-                break;
+                } else break;
             }
             case DEVICE_STATE_JOIN:
             {
