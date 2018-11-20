@@ -126,26 +126,27 @@
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\SAML21_DFP\1.1.110\saml21b\include</Value>
       <Value>%24(PackRepoDir)\arm\CMSIS\4.2.0\CMSIS\Include\</Value>
-      <Value>../board/mcu/saml21/hal/include</Value>
-      <Value>../board</Value>
-      <Value>../board/mcu/saml21/config</Value>
-      <Value>../board/mcu/saml21/cmsis</Value>
-      <Value>../board/mcu/saml21/hpl/core</Value>
+      <Value>../../../../src/boards</Value>
+      <Value>../../../../src/boards/mcu/saml21/config</Value>
+      <Value>../../../../src/boards/mcu/saml21</Value>
+      <Value>../../../../src/boards/mcu/saml21/hri</Value>
+      <Value>../../../../src/boards/mcu/saml21/cmsis</Value>
+      <Value>../../../../src/boards/mcu/saml21/hpl/core</Value>
+      <Value>../../../../src/boards/mcu/saml21/hal/include</Value>
+      <Value>../../../../src/boards/mcu/saml21/hal/utils/include</Value>
       <Value>../../../../src/system</Value>
-      <Value>../mac</Value>
-      <Value>../board/mcu/saml21/hal/utils/include</Value>
-      <Value>../board/mcu/saml21/hri</Value>
-      <Value>../radio</Value>
-      <Value>../radio/sx1276</Value>
-      <Value>../board/mcu/saml21/hpl/rtc</Value>
-      <Value>../board/mcu/saml21/hpl/systick</Value>
-      <Value>../board/mcu/saml21/hpl/sercom</Value>
-      <Value>../board/mcu/saml21/hpl/port</Value>
-      <Value>../app/common</Value>
+      <Value>../../../../src/mac</Value>
+      <Value>../../../../src/radio</Value>
+      <Value>../../../../src/radio/sx1276</Value>
+      <Value>../../../../src/boards/mcu/saml21/hpl/rtc</Value>
+      <Value>../../../../src/boards/mcu/saml21/hpl/systick</Value>
+      <Value>../../../../src/boards/mcu/saml21/hpl/sercom</Value>
+      <Value>../../../../src/boards/mcu/saml21/hpl/port</Value>
+      <Value>../../../../src/apps/LoRaMac/common</Value>
       <Value>../app/ClassC</Value>
       <Value>../app</Value>
-      <Value>../board/mcu/saml21</Value>
-      <Value>../soft-se</Value>
+      <Value>../../../../src/peripherals/soft-se</Value>
+      <Value>../../../../src/boards/SAML21</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
@@ -182,718 +183,951 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\src\apps\LoRaMac\common\NvmCtxMgmt.c">
+      <SubType>compile</SubType>
+      <Link>app\common\NvmCtxMgmt.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\apps\LoRaMac\common\NvmCtxMgmt.h">
+      <SubType>compile</SubType>
+      <Link>app\common\NvmCtxMgmt.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\arm_common_tables.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\arm_common_tables.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\arm_const_structs.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\arm_const_structs.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\arm_math.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\arm_math.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cm0.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cm0.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cm0plus.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cm0plus.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cm3.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cm3.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cm4.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cm4.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cm7.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cm7.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cmFunc.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cmFunc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cmInstr.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cmInstr.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_cmSimd.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_cmSimd.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_sc000.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_sc000.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\cmsis\core_sc300.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\cmsis\core_sc300.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_dmac_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_dmac_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_eic_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_eic_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_gclk_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_gclk_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_mclk_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_mclk_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_osc32kctrl_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_osc32kctrl_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_oscctrl_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_oscctrl_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_rtc_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_rtc_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_sercom_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_sercom_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\hpl_systick_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\hpl_systick_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\peripheral_clk_config.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\peripheral_clk_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\config\RTE_Components.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\config\RTE_Components.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_atomic.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_atomic.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_delay.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_delay.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_ext_irq.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_ext_irq.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_gpio.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_gpio.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_init.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_init.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_io.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_io.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_sleep.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_sleep.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_spi_m_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_spi_m_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_timer.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_timer.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hal_usart_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hal_usart_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_calendar.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_calendar.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_core.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_core.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_delay.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_delay.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_dma.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_dma.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_ext_irq.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_ext_irq.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_gpio.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_gpio.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_i2c_m_async.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_i2c_m_async.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_i2c_m_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_i2c_m_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_i2c_s_async.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_i2c_s_async.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_i2c_s_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_i2c_s_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_init.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_init.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_irq.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_irq.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_missing_features.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_missing_features.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_reset.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_reset.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_sleep.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_sleep.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_async.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_async.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_dma.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_dma.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_m_async.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_m_async.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_m_dma.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_m_dma.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_m_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_m_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_s_async.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_s_async.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_spi_s_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_spi_s_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_timer.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_timer.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_time_measure.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_time_measure.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_usart.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_usart.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_usart_async.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_usart_async.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\include\hpl_usart_sync.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\include\hpl_usart_sync.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_atomic.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_atomic.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_delay.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_delay.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_ext_irq.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_ext_irq.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_gpio.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_gpio.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_init.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_init.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_io.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_io.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_sleep.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_sleep.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_spi_m_sync.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_spi_m_sync.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\src\hal_usart_sync.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\src\hal_usart_sync.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\compiler.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\compiler.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\err_codes.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\err_codes.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\events.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\events.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\parts.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\parts.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils_assert.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils_assert.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils_decrement_macro.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils_decrement_macro.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils_event.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils_event.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils_increment_macro.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils_increment_macro.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils_list.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils_list.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils_recursion_macro.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils_recursion_macro.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\include\utils_repeat_macro.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\include\utils_repeat_macro.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\src\utils_assert.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\src\utils_assert.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\src\utils_event.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\src\utils_event.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\src\utils_list.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\src\utils_list.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hal\utils\src\utils_syscalls.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hal\utils\src\utils_syscalls.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\core\hpl_core_m0plus_base.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\core\hpl_core_m0plus_base.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\core\hpl_core_port.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\core\hpl_core_port.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\core\hpl_init.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\core\hpl_init.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\dmac\hpl_dmac.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\dmac\hpl_dmac.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\eic\hpl_eic.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\eic\hpl_eic.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\gclk\hpl_gclk.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\gclk\hpl_gclk.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\gclk\hpl_gclk_base.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\gclk\hpl_gclk_base.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\mclk\hpl_mclk.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\mclk\hpl_mclk.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\osc32kctrl\hpl_osc32kctrl.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\osc32kctrl\hpl_osc32kctrl.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\oscctrl\hpl_oscctrl.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\oscctrl\hpl_oscctrl.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\pm\hpl_pm.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\pm\hpl_pm.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\pm\hpl_pm_base.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\pm\hpl_pm_base.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\port\hpl_gpio_base.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\port\hpl_gpio_base.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\rtc\hpl_rtc_base.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\rtc\hpl_rtc_base.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\sercom\hpl_sercom.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\sercom\hpl_sercom.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hpl\systick\hpl_systick.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hpl\systick\hpl_systick.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_ac_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_ac_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_adc_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_adc_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_aes_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_aes_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_ccl_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_ccl_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_dac_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_dac_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_dmac_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_dmac_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_dsu_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_dsu_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_eic_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_eic_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_evsys_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_evsys_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_gclk_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_gclk_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_l21b.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_l21b.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_mclk_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_mclk_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_mtb_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_mtb_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_nvic_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_nvic_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_nvmctrl_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_nvmctrl_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_opamp_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_opamp_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_osc32kctrl_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_osc32kctrl_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_oscctrl_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_oscctrl_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_pac_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_pac_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_pm_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_pm_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_port_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_port_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_rstc_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_rstc_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_rtc_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_rtc_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_sercom_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_sercom_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_supc_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_supc_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_systemcontrol_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_systemcontrol_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_systick_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_systick_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_tal_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_tal_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_tcc_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_tcc_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_tc_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_tc_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_trng_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_trng_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_usb_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_usb_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hri\hri_wdt_l21.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hri\hri_wdt_l21.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hw_timer.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hw_timer.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\saml21\hw_timer.h">
+      <SubType>compile</SubType>
+      <Link>board\mcu\saml21\hw_timer.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\mcu\utilities.c">
+      <SubType>compile</SubType>
+      <Link>board\mcu\utilities.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\board-config.h">
+      <SubType>compile</SubType>
+      <Link>board\board-config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\board.c">
+      <SubType>compile</SubType>
+      <Link>board\board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\delay-board.c">
+      <SubType>compile</SubType>
+      <Link>board\delay-board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\eeprom-board.c">
+      <SubType>compile</SubType>
+      <Link>board\eeprom-board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\gpio-board.c">
+      <SubType>compile</SubType>
+      <Link>board\gpio-board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\rtc-board.c">
+      <SubType>compile</SubType>
+      <Link>board\rtc-board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\spi-board.c">
+      <SubType>compile</SubType>
+      <Link>board\spi-board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\sx1276-board.c">
+      <SubType>compile</SubType>
+      <Link>board\sx1276-board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\boards\SAML21\uart-board.c">
+      <SubType>compile</SubType>
+      <Link>board\uart-board.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMac.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMac.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMac.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMac.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacAdr.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacAdr.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacAdr.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacAdr.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacClassB.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacClassB.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacClassB.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacClassB.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacClassBConfig.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacClassBConfig.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacCommands.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacCommands.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacCommands.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacCommands.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacConfirmQueue.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacConfirmQueue.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacConfirmQueue.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacConfirmQueue.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacCrypto.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacCrypto.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacCrypto.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacCrypto.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacFCntHandler.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacFCntHandler.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacFCntHandler.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacFCntHandler.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacHeaderTypes.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacHeaderTypes.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacMessageTypes.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacMessageTypes.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacParser.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacParser.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacParser.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacParser.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacSerializer.c">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacSerializer.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacSerializer.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacSerializer.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacTest.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacTest.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\LoRaMacTypes.h">
+      <SubType>compile</SubType>
+      <Link>mac\LoRaMacTypes.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\Region.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\Region.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\Region.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\Region.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionAS923.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionAS923.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionAS923.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionAS923.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionAU915.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionAU915.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionAU915.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionAU915.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionCN470.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionCN470.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionCN470.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionCN470.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionCN779.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionCN779.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionCN779.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionCN779.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionCommon.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionCommon.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionCommon.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionCommon.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionEU433.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionEU433.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionEU433.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionEU433.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionEU868.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionEU868.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionEU868.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionEU868.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionIN865.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionIN865.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionIN865.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionIN865.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionKR920.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionKR920.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionKR920.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionKR920.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionRU864.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionRU864.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionRU864.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionRU864.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionUS915.c">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionUS915.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\region\RegionUS915.h">
+      <SubType>compile</SubType>
+      <Link>mac\region\RegionUS915.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mac\secure-element.h">
+      <SubType>compile</SubType>
+      <Link>mac\secure-element.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\peripherals\soft-se\aes.c">
+      <SubType>compile</SubType>
+      <Link>soft-se\aes.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\peripherals\soft-se\aes.h">
+      <SubType>compile</SubType>
+      <Link>soft-se\aes.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\peripherals\soft-se\cmac.c">
+      <SubType>compile</SubType>
+      <Link>soft-se\cmac.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\peripherals\soft-se\cmac.h">
+      <SubType>compile</SubType>
+      <Link>soft-se\cmac.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\peripherals\soft-se\soft-se.c">
+      <SubType>compile</SubType>
+      <Link>soft-se\soft-se.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\radio\radio.h">
+      <SubType>compile</SubType>
+      <Link>radio\radio.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\radio\sx1276\sx1276.c">
+      <SubType>compile</SubType>
+      <Link>radio\sx1276\sx1276.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\radio\sx1276\sx1276.h">
+      <SubType>compile</SubType>
+      <Link>radio\sx1276\sx1276.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\radio\sx1276\sx1276Regs-Fsk.h">
+      <SubType>compile</SubType>
+      <Link>radio\sx1276\sx1276Regs-Fsk.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\radio\sx1276\sx1276Regs-LoRa.h">
+      <SubType>compile</SubType>
+      <Link>radio\sx1276\sx1276Regs-LoRa.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\adc.c">
+      <SubType>compile</SubType>
+      <Link>system\adc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\adc.h">
+      <SubType>compile</SubType>
+      <Link>system\adc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\delay.c">
+      <SubType>compile</SubType>
+      <Link>system\delay.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\delay.h">
+      <SubType>compile</SubType>
+      <Link>system\delay.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\eeprom.c">
+      <SubType>compile</SubType>
+      <Link>system\eeprom.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\eeprom.h">
+      <SubType>compile</SubType>
+      <Link>system\eeprom.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\fifo.c">
+      <SubType>compile</SubType>
+      <Link>system\fifo.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\fifo.h">
+      <SubType>compile</SubType>
+      <Link>system\fifo.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\gpio.c">
+      <SubType>compile</SubType>
+      <Link>system\gpio.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\gpio.h">
+      <SubType>compile</SubType>
+      <Link>system\gpio.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\gps.c">
+      <SubType>compile</SubType>
+      <Link>system\gps.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\gps.h">
+      <SubType>compile</SubType>
+      <Link>system\gps.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\i2c.c">
+      <SubType>compile</SubType>
+      <Link>system\i2c.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\i2c.h">
+      <SubType>compile</SubType>
+      <Link>system\i2c.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\nvmm.c">
+      <SubType>compile</SubType>
+      <Link>system\nvmm.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\nvmm.h">
+      <SubType>compile</SubType>
+      <Link>system\nvmm.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\serial.h">
+      <SubType>compile</SubType>
+      <Link>system\serial.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\spi.h">
+      <SubType>compile</SubType>
+      <Link>system\spi.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\systime.c">
+      <SubType>compile</SubType>
+      <Link>system\systime.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\systime.h">
+      <SubType>compile</SubType>
+      <Link>system\systime.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\timer.c">
+      <SubType>compile</SubType>
+      <Link>system\timer.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\timer.h">
+      <SubType>compile</SubType>
+      <Link>system\timer.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\uart.c">
+      <SubType>compile</SubType>
+      <Link>system\uart.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\system\uart.h">
+      <SubType>compile</SubType>
+      <Link>system\uart.h</Link>
+    </Compile>
     <Compile Include="app\ClassC\Commissioning.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\ClassC\main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="app\common\NvmCtxMgmt.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="app\common\NvmCtxMgmt.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\board-config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\delay-board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\eeprom-board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\gpio-board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\arm_common_tables.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\arm_const_structs.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\arm_math.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cm0.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cm0plus.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cm3.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cm4.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cm7.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cmFunc.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cmInstr.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_cmSimd.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_sc000.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\cmsis\core_sc300.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_dmac_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_eic_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_gclk_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_mclk_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_osc32kctrl_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_oscctrl_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_rtc_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_sercom_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\hpl_systick_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\peripheral_clk_config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\config\RTE_Components.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_atomic.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_delay.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_ext_irq.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_gpio.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_init.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_io.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_sleep.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_spi_m_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_timer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hal_usart_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_calendar.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_core.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_delay.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_dma.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_ext_irq.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_gpio.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_i2c_m_async.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_i2c_m_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_i2c_s_async.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_i2c_s_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_init.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_irq.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_missing_features.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_reset.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_sleep.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_async.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_dma.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_m_async.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_m_dma.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_m_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_s_async.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_spi_s_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_timer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_time_measure.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_usart.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_usart_async.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\include\hpl_usart_sync.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_atomic.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_delay.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_ext_irq.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_gpio.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_init.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_io.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_sleep.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_spi_m_sync.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\src\hal_usart_sync.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\compiler.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\err_codes.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\events.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\parts.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils_assert.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils_decrement_macro.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils_event.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils_increment_macro.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils_list.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils_recursion_macro.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\include\utils_repeat_macro.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\src\utils_assert.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\src\utils_event.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\src\utils_list.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hal\utils\src\utils_syscalls.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\core\hpl_core_m0plus_base.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\core\hpl_core_port.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\core\hpl_init.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\dmac\hpl_dmac.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\eic\hpl_eic.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\gclk\hpl_gclk.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\gclk\hpl_gclk_base.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\mclk\hpl_mclk.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\osc32kctrl\hpl_osc32kctrl.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\oscctrl\hpl_oscctrl.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\pm\hpl_pm.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\pm\hpl_pm_base.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\port\hpl_gpio_base.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\rtc\hpl_rtc_base.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\sercom\hpl_sercom.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hpl\systick\hpl_systick.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_ac_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_adc_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_aes_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_ccl_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_dac_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_dmac_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_dsu_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_eic_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_evsys_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_gclk_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_l21b.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_mclk_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_mtb_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_nvic_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_nvmctrl_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_opamp_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_osc32kctrl_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_oscctrl_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_pac_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_pm_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_port_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_rstc_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_rtc_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_sercom_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_supc_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_systemcontrol_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_systick_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_tal_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_tcc_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_tc_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_trng_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_usb_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hri\hri_wdt_l21.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hw_timer.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\saml21\hw_timer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\mcu\utilities.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\rtc-board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\spi-board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\sx1276-board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\uart-board.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="board\utilities.h">
+    <Compile Include="board\mcu\saml21\hal\src\hal_timer.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Device_Startup\startup_saml21.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Device_Startup\system_saml21.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMac.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMac.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacAdr.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacAdr.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacClassB.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacClassB.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacClassBConfig.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacCommands.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacCommands.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacConfirmQueue.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacConfirmQueue.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacCrypto.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacCrypto.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacFCntHandler.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacFCntHandler.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacHeaderTypes.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacMessageTypes.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacParser.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacParser.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacSerializer.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacSerializer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacTest.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\LoRaMacTypes.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\Region.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\Region.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionAS923.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionAS923.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionAU915.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionAU915.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionCN470.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionCN470.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionCN779.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionCN779.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionCommon.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionCommon.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionEU433.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionEU433.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionEU868.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionEU868.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionIN865.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionIN865.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionKR920.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionKR920.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionRU864.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionRU864.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionUS915.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\region\RegionUS915.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="mac\secure-element.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="radio\radio.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="radio\sx1276\sx1276.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="radio\sx1276\sx1276.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="radio\sx1276\sx1276Regs-Fsk.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="radio\sx1276\sx1276Regs-LoRa.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="soft-se\aes.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="soft-se\aes.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="soft-se\cmac.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="soft-se\cmac.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="soft-se\soft-se.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\adc.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\adc.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\delay.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\delay.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\eeprom.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\eeprom.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\fifo.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\fifo.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\gpio.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\gpio.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\gps.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\gps.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\i2c.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\i2c.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\nvmm.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\nvmm.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\serial.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\spi.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\systime.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\systime.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\timer.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\timer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\uart.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="system\uart.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
