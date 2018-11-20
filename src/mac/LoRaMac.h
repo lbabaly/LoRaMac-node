@@ -503,7 +503,7 @@ typedef struct sBeaconInfo
     /*!
      * SNR
      */
-    uint8_t Snr;
+    int8_t Snr;
     /*!
      * Data structure for the gateway specific part. The
      * content of the values may differ for each gateway
@@ -871,7 +871,7 @@ typedef struct sMcpsIndication
     /*!
      * Snr of the received packet
      */
-    uint8_t Snr;
+    int8_t Snr;
     /*!
      * Receive window
      */
@@ -1567,6 +1567,10 @@ typedef enum eMib
      * The antenna gain is used to calculate the TX power of the node.
      * The formula is:
      * radioTxPower = ( int8_t )floor( maxEirp - antennaGain )
+     * 
+     * \remark The antenna gain value is referenced to the isotropic antenna.
+     *         The value is in dBi.
+     *         MIB_ANTENNA_GAIN[dBi] = measuredAntennaGain[dBd] + 2.15
      */
     MIB_ANTENNA_GAIN,
     /*!
@@ -1574,6 +1578,10 @@ typedef enum eMib
      * The antenna gain is used to calculate the TX power of the node.
      * The formula is:
      * radioTxPower = ( int8_t )floor( maxEirp - antennaGain )
+     * 
+     * \remark The antenna gain value is referenced to the isotropic antenna.
+     *         The value is in dBi.
+     *         MIB_DEFAULT_ANTENNA_GAIN[dBi] = measuredAntennaGain[dBd] + 2.15
      */
     MIB_DEFAULT_ANTENNA_GAIN,
     /*!

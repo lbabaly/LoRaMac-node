@@ -466,7 +466,7 @@ static bool SendFrame( void )
 /*!
  * \brief Function executed on TxNextPacket Timeout event
  */
-static void OnTxNextPacketTimerEvent( void )
+static void OnTxNextPacketTimerEvent( void* context )
 {
     MibRequestConfirm_t mibReq;
     LoRaMacStatus_t status;
@@ -494,7 +494,7 @@ static void OnTxNextPacketTimerEvent( void )
 /*!
  * \brief Function executed on Led 1 Timeout event
  */
-static void OnLed1TimerEvent( void )
+static void OnLed1TimerEvent( void* context )
 {
     TimerStop( &Led1Timer );
     // Switch LED 1 OFF
@@ -504,7 +504,7 @@ static void OnLed1TimerEvent( void )
 /*!
  * \brief Function executed on Led 2 Timeout event
  */
-static void OnLed2TimerEvent( void )
+static void OnLed2TimerEvent( void* context )
 {
     TimerStop( &Led2Timer );
     // Switch LED 2 OFF
@@ -514,7 +514,7 @@ static void OnLed2TimerEvent( void )
 /*!
  * \brief Function executed on Beacon timer Timeout event
  */
-static void OnLedBeaconTimerEvent( void )
+static void OnLedBeaconTimerEvent( void* context )
 {
     GpioWrite( &Led2, 1 );
     TimerStart( &Led2Timer );
@@ -676,7 +676,7 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
     {
         // The server signals that it has pending data to be sent.
         // We schedule an uplink as soon as possible to flush the server.
-        OnTxNextPacketTimerEvent( );
+        OnTxNextPacketTimerEvent( NULL );
     }
     // Check Buffer
     // Check BufferSize
@@ -887,18 +887,6 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
     TimerStart( &Led2Timer );
 
     const char *slotStrings[] = { "1", "2", "C", "Ping-Slot", "Multicast Ping-Slot" };
-    int32_t snr = 0;
-    if( mcpsIndication->Snr & 0x80 ) // The SNR sign bit is 1
-    {
-        // Invert and divide by 4
-        snr = ( ( ~mcpsIndication->Snr + 1 ) & 0xFF ) >> 2;
-        snr = -snr;
-    }
-    else
-    {
-        // Divide by 4
-        snr = ( mcpsIndication->Snr & 0xFF ) >> 2;
-    }
 
     printf( "\r\n###### ===== DOWNLINK FRAME %lu ==== ######\r\n", mcpsIndication->DownLinkCounter );
 
@@ -915,7 +903,7 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
     printf( "\r\n" );
     printf( "DATA RATE   : DR_%d\r\n", mcpsIndication->RxDatarate );
     printf( "RX RSSI     : %d\r\n", mcpsIndication->Rssi );
-    printf( "RX SNR      : %ld\r\n", snr );
+    printf( "RX SNR      : %d\r\n", mcpsIndication->Snr );
 
     printf( "\r\n" );
 }
@@ -1065,7 +1053,7 @@ static void MlmeIndication( MlmeIndication_t *mlmeIndication )
     {
         case MLME_SCHEDULE_UPLINK:
         {// The MAC signals that we shall provide an uplink as soon as possible
-            OnTxNextPacketTimerEvent( );
+            OnTxNextPacketTimerEvent( NULL );
             break;
         }
         case MLME_BEACON_LOST:
@@ -1099,20 +1087,7 @@ static void MlmeIndication( MlmeIndication_t *mlmeIndication )
                 printf( "FREQ        : %lu\r\n", mlmeIndication->BeaconInfo.Frequency );
                 printf( "DATA RATE   : DR_%d\r\n", mlmeIndication->BeaconInfo.Datarate );
                 printf( "RX RSSI     : %d\r\n", mlmeIndication->BeaconInfo.Rssi );
-
-                int32_t snr = 0;
-                if( mlmeIndication->BeaconInfo.Snr & 0x80 ) // The SNR sign bit is 1
-                {
-                    // Invert and divide by 4
-                    snr = ( ( ~mlmeIndication->BeaconInfo.Snr + 1 ) & 0xFF ) >> 2;
-                    snr = -snr;
-                }
-                else
-                {
-                    // Divide by 4
-                    snr = ( mlmeIndication->BeaconInfo.Snr & 0xFF ) >> 2;
-                }
-                printf( "RX SNR      : %ld\r\n", snr );
+                printf( "RX SNR      : %d\r\n", mlmeIndication->BeaconInfo.Snr );
                 printf( "\r\n" );
             }
             else

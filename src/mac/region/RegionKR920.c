@@ -405,12 +405,6 @@ void RegionKR920InitDefaults( InitDefaultsParams_t* params )
             NvmCtx.ChannelsMask[0] |= NvmCtx.ChannelsDefaultMask[0];
             break;
         }
-        case INIT_TYPE_APP_DEFAULTS:
-        {
-            // Update the channels mask defaults
-            RegionCommonChanMaskCopy( NvmCtx.ChannelsMask, NvmCtx.ChannelsDefaultMask, 1 );
-            break;
-        }
         default:
         {
             break;
@@ -826,7 +820,7 @@ uint8_t RegionKR920DlChannelReq( DlChannelReqParams_t* dlChannelReq )
     return status;
 }
 
-int8_t RegionKR920AlternateDr( int8_t  currentDr )
+int8_t RegionKR920AlternateDr( int8_t currentDr, AlternateDrType_t type )
 {
     return currentDr;
 }
@@ -919,6 +913,11 @@ LoRaMacStatus_t RegionKR920ChannelAdd( ChannelAddParams_t* channelAdd )
     bool freqInvalid = false;
     uint8_t id = channelAdd->ChannelId;
 
+    if( id < KR920_NUMB_DEFAULT_CHANNELS )
+    {
+        return LORAMAC_STATUS_FREQ_AND_DR_INVALID;
+    }
+
     if( id >= KR920_MAX_NB_CHANNELS )
     {
         return LORAMAC_STATUS_PARAMETER_INVALID;
@@ -936,17 +935,6 @@ LoRaMacStatus_t RegionKR920ChannelAdd( ChannelAddParams_t* channelAdd )
     if( channelAdd->NewChannel->DrRange.Fields.Min > channelAdd->NewChannel->DrRange.Fields.Max )
     {
         drInvalid = true;
-    }
-
-    // Default channels don't accept all values
-    if( id < KR920_NUMB_DEFAULT_CHANNELS )
-    {
-        // All datarates are supported
-        // We are not allowed to change the frequency
-        if( channelAdd->NewChannel->Frequency != NvmCtx.Channels[id].Frequency )
-        {
-            freqInvalid = true;
-        }
     }
 
     // Check frequency
