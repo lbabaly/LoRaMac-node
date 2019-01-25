@@ -69,7 +69,7 @@
  */
 #define LORAWAN_ADR_ON                              1
 
-#if defined( REGION_EU868 )
+#if defined( REGION_EU868 ) || defined( REGION_RU864 ) || defined( REGION_CN779 ) || defined( REGION_EU433 )
 
 #include "LoRaMacTest.h"
 
@@ -709,7 +709,7 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
                     mibReq.Param.AdrEnable = true;
                     LoRaMacMibSetRequestConfirm( &mibReq );
 
-#if defined( REGION_EU868 )
+#if defined( REGION_EU868 ) || defined( REGION_RU864 ) || defined( REGION_CN779 ) || defined( REGION_EU433 )
                     LoRaMacTestSetDutyCycleOn( false );
 #endif
                 }
@@ -730,7 +730,7 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
                     mibReq.Type = MIB_ADR;
                     mibReq.Param.AdrEnable = LORAWAN_ADR_ON;
                     LoRaMacMibSetRequestConfirm( &mibReq );
-#if defined( REGION_EU868 )
+#if defined( REGION_EU868 ) || defined( REGION_RU864 ) || defined( REGION_CN779 ) || defined( REGION_EU433 )
                     LoRaMacTestSetDutyCycleOn( LORAWAN_DUTYCYCLE_ON );
 #endif
                     break;
@@ -776,7 +776,7 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
                         mibReq.Type = MIB_ADR;
                         mibReq.Param.AdrEnable = LORAWAN_ADR_ON;
                         LoRaMacMibSetRequestConfirm( &mibReq );
-#if defined( REGION_EU868 )
+#if defined( REGION_EU868 ) || defined( REGION_RU864 ) || defined( REGION_CN779 ) || defined( REGION_EU433 )
                         LoRaMacTestSetDutyCycleOn( LORAWAN_DUTYCYCLE_ON );
 #endif
 
@@ -823,18 +823,6 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
     TimerStart( &Led2Timer );
 
     const char *slotStrings[] = { "1", "2", "C", "Ping-Slot", "Multicast Ping-Slot" };
-    int32_t snr = 0;
-    if( mcpsIndication->Snr & 0x80 ) // The SNR sign bit is 1
-    {
-        // Invert and divide by 4
-        snr = ( ( ~mcpsIndication->Snr + 1 ) & 0xFF ) >> 2;
-        snr = -snr;
-    }
-    else
-    {
-        // Divide by 4
-        snr = ( mcpsIndication->Snr & 0xFF ) >> 2;
-    }
 
     printf( "\r\n###### ===== DOWNLINK FRAME %lu ==== ######\r\n", mcpsIndication->DownLinkCounter );
 
@@ -851,7 +839,7 @@ static void McpsIndication( McpsIndication_t *mcpsIndication )
     printf( "\r\n" );
     printf( "DATA RATE   : DR_%d\r\n", mcpsIndication->RxDatarate );
     printf( "RX RSSI     : %d\r\n", mcpsIndication->Rssi );
-    printf( "RX SNR      : %ld\r\n", snr );
+    printf( "RX SNR      : %d\r\n", mcpsIndication->Snr );
 
     printf( "\r\n" );
 }
@@ -1074,7 +1062,7 @@ int main( void )
                 mibReq.Param.AdrEnable = LORAWAN_ADR_ON;
                 LoRaMacMibSetRequestConfirm( &mibReq );
 
-#if defined( REGION_EU868 )
+#if defined( REGION_EU868 ) || defined( REGION_RU864 ) || defined( REGION_CN779 ) || defined( REGION_EU433 )
                 LoRaMacTestSetDutyCycleOn( LORAWAN_DUTYCYCLE_ON );
 #endif
                 mibReq.Type = MIB_SYSTEM_MAX_RX_ERROR;
