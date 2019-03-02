@@ -457,14 +457,6 @@ static void CheckToDisableAckTimeout( bool nodeAckRequested, DeviceClass_t devCl
 static void OnAckTimeoutTimerEvent( void* context );
 
 /*!
- * \brief Initializes and opens the reception window
- *
- * \param [IN] rxContinuous Set to true, if the RX is in continuous mode
- * \param [IN] maxRxWindow Maximum RX window timeout
- */
-static void RxWindowSetup( bool rxContinuous, uint32_t maxRxWindow );
-
-/*!
  * \brief Configures the events to trigger an MLME-Indication with
  *        a MLME type of MLME_SCHEDULE_UPLINK.
  */
@@ -618,6 +610,14 @@ LoRaMacStatus_t SetTxContinuousWave1( uint16_t timeout, uint32_t frequency, uint
  * \brief Resets MAC specific parameters to default
  */
 static void ResetMacParameters( void );
+
+/*!
+ * \brief Initializes and opens the reception window
+ *
+ * \param [IN] rxTimer  Window timer to be topped.
+ * \param [IN] rxConfig Window parameters to be setup
+ */
+static void RxWindowSetup( TimerEvent_t* rxTimer, RxConfigParams_t* rxConfig );
 
 /*!
  * \brief Opens up a continuous RX 2 window. This is used for
@@ -881,6 +881,7 @@ static void ProcessRadioTxDone( void )
     if( MacCtx.NvmCtx->DeviceClass != CLASS_C )
     {
         Radio.Sleep( );
+        MacCtx.RxSlot = RX_SLOT_NONE;
     }
     else
     {
@@ -890,11 +891,9 @@ static void ProcessRadioTxDone( void )
     // Setup timers
     TimerSetValue( &MacCtx.RxWindowTimer1, MacCtx.RxWindow1Delay );
     TimerStart( &MacCtx.RxWindowTimer1 );
-    if( MacCtx.NvmCtx->DeviceClass != CLASS_C )
-    {
-        TimerSetValue( &MacCtx.RxWindowTimer2, MacCtx.RxWindow2Delay );
-        TimerStart( &MacCtx.RxWindowTimer2 );
-    }
+    TimerSetValue( &MacCtx.RxWindowTimer2, MacCtx.RxWindow2Delay );
+    TimerStart( &MacCtx.RxWindowTimer2 );
+
     if( ( MacCtx.NvmCtx->DeviceClass == CLASS_C ) || ( MacCtx.NodeAckRequested == true ) )
     {
         getPhy.Attribute = PHY_ACK_TIMEOUT;
@@ -931,13 +930,22 @@ static void PrepareRxDoneAbort( void )
 {
     MacCtx.MacState |= LORAMAC_RX_ABORT;
 
-    if( MacCtx.NodeAckRequested )
+    if( MacCtx.NodeAckRequested == true )
     {
         OnAckTimeoutTimerEvent( NULL );
     }
 
     MacCtx.MacFlags.Bits.McpsInd = 1;
     MacCtx.MacFlags.Bits.MacDone = 1;
+
+    if( MacCtx.NvmCtx->DeviceClass == CLASS_C )
+    {// Activate RX2 window for Class C
+        OpenContinuousRx2Window( );
+    }
+    else
+    {
+        MacCtx.RxSlot = RX_SLOT_NONE;
+    }
 }
 
 static void ProcessRadioRxDone( void )
@@ -1171,19 +1179,13 @@ static void ProcessRadioRxDone( void )
                 {
                     // We are not the destination of this frame.
                     MacCtx.McpsIndication.Status = LORAMAC_EVENT_INFO_STATUS_ADDRESS_FAIL;
-
-                    // Abort the reception, if we are not in RX_SLOT_WIN_CLASS_C
-                    if( MacCtx.McpsIndication.RxSlot != RX_SLOT_WIN_CLASS_C )
-                    {
-                        PrepareRxDoneAbort( );
-                    }
                 }
                 else
                 {
                     // MIC calculation fail
                     MacCtx.McpsIndication.Status = LORAMAC_EVENT_INFO_STATUS_MIC_FAIL;
-                    PrepareRxDoneAbort( );
                 }
+                PrepareRxDoneAbort( );
                 return;
             }
 
@@ -1327,6 +1329,15 @@ static void ProcessRadioRxDone( void )
     {  // Procedure is completed when the AckTimeoutTimer is not running anymore
         MacCtx.MacFlags.Bits.MacDone = 1;
     }
+
+    if( MacCtx.NvmCtx->DeviceClass == CLASS_C )
+    {// Activate RX2 window for Class C
+        OpenContinuousRx2Window( );
+    }
+    else
+    {
+        MacCtx.RxSlot = RX_SLOT_NONE;
+    }
 }
 
 static void ProcessRadioTxTimeout( void )
@@ -1334,6 +1345,7 @@ static void ProcessRadioTxTimeout( void )
     if( MacCtx.NvmCtx->DeviceClass != CLASS_C )
     {
         Radio.Sleep( );
+        MacCtx.RxSlot = RX_SLOT_NONE;
     }
     else
     {
@@ -1413,6 +1425,10 @@ static void HandleRadioRxErrorTimeout( LoRaMacEventInfoStatus_t rx1EventInfoStat
     if( MacCtx.NvmCtx->DeviceClass == CLASS_C )
     {
         OpenContinuousRx2Window( );
+    }
+    else
+    {
+        MacCtx.RxSlot = RX_SLOT_NONE;
     }
 }
 
@@ -1525,8 +1541,8 @@ static void LoRaMacHandleIndicationEvents( void )
     // Handle MLME indication
     if( MacCtx.MacFlags.Bits.MlmeInd == 1 )
     {
-        MacCtx.MacPrimitives->MacMlmeIndication( &MacCtx.MlmeIndication );
         MacCtx.MacFlags.Bits.MlmeInd = 0;
+        MacCtx.MacPrimitives->MacMlmeIndication( &MacCtx.MlmeIndication );
     }
 
     // Handle events
@@ -1546,13 +1562,6 @@ static void LoRaMacHandleIndicationEvents( void )
     if( MacCtx.MacFlags.Bits.McpsInd == 1 )
     {
         MacCtx.MacFlags.Bits.McpsInd = 0;
-        if( MacCtx.NvmCtx->DeviceClass == CLASS_C )
-        {// Activate RX2 window for Class C
-            if( MacCtx.MacState == LORAMAC_IDLE )
-            {
-                OpenContinuousRx2Window( );
-            }
-        }
         MacCtx.MacPrimitives->MacMcpsIndication( &MacCtx.McpsIndication );
     }
 }
@@ -1596,6 +1605,8 @@ static void LoRaMacHandleMcpsRequest( void )
 
         if( stopRetransmission == true )
         {// Stop retransmission
+            TimerStop( &MacCtx.TxDelayedTimer );
+            MacCtx.MacState &= ~LORAMAC_TX_DELAYED;
             StopRetransmission( );
         }
         else if( waitForRetransmission == false )
@@ -1722,50 +1733,32 @@ static void OnTxDelayedTimerEvent( void* context )
 
 static void OnRxWindow1TimerEvent( void* context )
 {
-    TimerStop( &MacCtx.RxWindowTimer1 );
-    MacCtx.RxSlot = RX_SLOT_WIN_1;
-
     MacCtx.RxWindow1Config.Channel = MacCtx.Channel;
     MacCtx.RxWindow1Config.DrOffset = MacCtx.NvmCtx->MacParams.Rx1DrOffset;
     MacCtx.RxWindow1Config.DownlinkDwellTime = MacCtx.NvmCtx->MacParams.DownlinkDwellTime;
     MacCtx.RxWindow1Config.RepeaterSupport = MacCtx.NvmCtx->RepeaterSupport;
     MacCtx.RxWindow1Config.RxContinuous = false;
-    MacCtx.RxWindow1Config.RxSlot = MacCtx.RxSlot;
+    MacCtx.RxWindow1Config.RxSlot = RX_SLOT_WIN_1;
 
-    if( MacCtx.NvmCtx->DeviceClass == CLASS_C )
-    {
-        Radio.Standby( );
-    }
-
-    RegionRxConfig( MacCtx.NvmCtx->Region, &MacCtx.RxWindow1Config, ( int8_t* ) &MacCtx.McpsIndication.RxDatarate );
-    RxWindowSetup( MacCtx.RxWindow1Config.RxContinuous, MacCtx.NvmCtx->MacParams.MaxRxWindow );
+    RxWindowSetup( &MacCtx.RxWindowTimer1, &MacCtx.RxWindow1Config );
 }
 
 static void OnRxWindow2TimerEvent( void* context )
 {
-    TimerStop( &MacCtx.RxWindowTimer2 );
-
+    // Check if we are processing Rx1 window.
+    // If yes, we don't setup the Rx2 window.
+    if( MacCtx.RxSlot == RX_SLOT_WIN_1 )
+    {
+        return;
+    }
     MacCtx.RxWindow2Config.Channel = MacCtx.Channel;
     MacCtx.RxWindow2Config.Frequency = MacCtx.NvmCtx->MacParams.Rx2Channel.Frequency;
     MacCtx.RxWindow2Config.DownlinkDwellTime = MacCtx.NvmCtx->MacParams.DownlinkDwellTime;
     MacCtx.RxWindow2Config.RepeaterSupport = MacCtx.NvmCtx->RepeaterSupport;
+    MacCtx.RxWindow2Config.RxContinuous = false;
     MacCtx.RxWindow2Config.RxSlot = RX_SLOT_WIN_2;
 
-    if( MacCtx.NvmCtx->DeviceClass != CLASS_C )
-    {
-        MacCtx.RxWindow2Config.RxContinuous = false;
-    }
-    else
-    {
-        // Setup continuous listening for class c
-        MacCtx.RxWindow2Config.RxContinuous = true;
-    }
-
-    if( RegionRxConfig( MacCtx.NvmCtx->Region, &MacCtx.RxWindow2Config, ( int8_t* ) &MacCtx.McpsIndication.RxDatarate ) == true )
-    {
-        RxWindowSetup( MacCtx.RxWindow2Config.RxContinuous, MacCtx.NvmCtx->MacParams.MaxRxWindow );
-        MacCtx.RxSlot = RX_SLOT_WIN_2;
-    }
+    RxWindowSetup( &MacCtx.RxWindowTimer2, &MacCtx.RxWindow2Config );
 }
 
 static void CheckToDisableAckTimeout( bool nodeAckRequested, DeviceClass_t devClass, bool ackReceived )
@@ -1802,18 +1795,6 @@ static void OnAckTimeoutTimerEvent( void* context )
     if( MacCtx.NvmCtx->DeviceClass == CLASS_C )
     {
         MacCtx.MacFlags.Bits.MacDone = 1;
-    }
-}
-
-static void RxWindowSetup( bool rxContinuous, uint32_t maxRxWindow )
-{
-    if( rxContinuous == false )
-    {
-        Radio.Rx( maxRxWindow );
-    }
-    else
-    {
-        Radio.Rx( 0 ); // Continuous mode
     }
 }
 
@@ -2568,10 +2549,39 @@ static void ResetMacParameters( void )
     MacCtx.NvmCtx->LastTxChannel = MacCtx.Channel;
 }
 
+/*!
+ * \brief Initializes and opens the reception window
+ *
+ * \param [IN] rxTimer  Window timer to be topped.
+ * \param [IN] rxConfig Window parameters to be setup
+ */
+static void RxWindowSetup( TimerEvent_t* rxTimer, RxConfigParams_t* rxConfig )
+{
+    TimerStop( rxTimer );
+
+    // Ensure the radio is Idle
+    Radio.Standby( );
+
+    if( RegionRxConfig( MacCtx.NvmCtx->Region, rxConfig, ( int8_t* )&MacCtx.McpsIndication.RxDatarate ) == true )
+    {
+        Radio.Rx( MacCtx.NvmCtx->MacParams.MaxRxWindow );
+        MacCtx.RxSlot = rxConfig->RxSlot;
+    }
+}
+
 static void OpenContinuousRx2Window( void )
 {
-    OnRxWindow2TimerEvent( NULL );
-    MacCtx.RxSlot = RX_SLOT_WIN_CLASS_C;
+    MacCtx.RxWindow2Config.RxSlot = RX_SLOT_WIN_CLASS_C;
+    // Setup continuous listening
+    MacCtx.RxWindow2Config.RxContinuous = true;
+
+    // At this point the Radio should be idle.
+    // Thus, there is no need to set the radio in standby mode.
+    if( RegionRxConfig( MacCtx.NvmCtx->Region, &MacCtx.RxWindow2Config, ( int8_t* )&MacCtx.McpsIndication.RxDatarate ) == true )
+    {
+        Radio.Rx( 0 ); // Continuous mode
+        MacCtx.RxSlot = MacCtx.RxWindow2Config.RxSlot;
+    }
 }
 
 LoRaMacStatus_t PrepareFrame( LoRaMacHeader_t* macHdr, LoRaMacFrameCtrl_t* fCtrl, uint8_t fPort, void* fBuffer, uint16_t fBufferSize )
