@@ -74,7 +74,7 @@ typedef enum eLoRaMacFCntHandlerStatus
  * Signature of callback function to be called by this module when the
  * non-volatile needs to be saved.
  */
-typedef void ( *EventNvmCtxChanged )( void );
+typedef void ( *LoRaMacFCntHandlerNvmEvent )( void );
 
 /*!
  * \brief Initialization of LoRaMac FCnt Handler module
@@ -84,7 +84,7 @@ typedef void ( *EventNvmCtxChanged )( void );
  *
  * \retval                      - Status of the operation
  */
-LoRaMacFCntHandlerStatus_t LoRaMacFCntHandlerInit( EventNvmCtxChanged fCntHandlerNvmCtxChanged );
+LoRaMacFCntHandlerStatus_t LoRaMacFCntHandlerInit( LoRaMacFCntHandlerNvmEvent fCntHandlerNvmCtxChanged );
 
 /*!
  * Restores the internal non-volatile context from passed pointer.
@@ -163,6 +163,26 @@ LoRaMacFCntHandlerStatus_t LoRaMacResetFCnts( void );
  * \retval                     - Status of the operation
  */
 LoRaMacFCntHandlerStatus_t LoRaMacFCntHandlerSetMulticastReference( MulticastCtx_t* multicastList );
+
+/*!
+ * Computes next RJcount0 or RJcount1 counter value.
+ *
+ * \param[IN]     fCntID          - Frame counter identifier
+ * \param[OUT]    rJcount         - RJcount value
+ *
+ * \retval                     - Status of the operation
+ */
+LoRaMacFCntHandlerStatus_t LoRaMacGetRJcount( FCntIdentifier_t fCntID, uint16_t* rJcount );
+
+/*!
+ * Sets the RJcount0 or RJcount1 counter value.
+ *
+ * \param[IN]     fCntID          - Frame counter identifier
+ * \param[IN]     rJcount         - RJcount value
+ *
+ * \retval                     - Status of the operation
+ */
+LoRaMacFCntHandlerStatus_t LoRaMacSetRJcount( FCntIdentifier_t fCntID, uint16_t rJcount );
 
 /*! \} addtogroup LORAMAC */
 
